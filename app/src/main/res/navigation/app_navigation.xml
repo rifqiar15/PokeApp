@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.bithealth.pokeapp.presentation.fragment.SplashScreenFragment"
+        android:name="com.rifqi.pokeapp.presentation.fragment.SplashScreenFragment"
         android:label="SplashScreenFragment"
         tools:layout="@layout/fragment_splash_screen">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.bithealth.pokeapp.presentation.fragment.MainFragment"
+        android:name="com.rifqi.pokeapp.presentation.fragment.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main">
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.bithealth.pokeapp.presentation.fragment.DetailFragment"
+        android:name="com.rifqi.pokeapp.presentation.fragment.DetailFragment"
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail"/>
 </navigation>
