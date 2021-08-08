@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.rifqi.pokeapp.domain.PokemonUseCase
 import com.rifqi.pokeapp.domain.Resource
 import com.rifqi.pokeapp.domain.entity.GetDetailPokemon
+import com.rifqi.pokeapp.domain.entity.GetEvolutionPokemon
 import com.rifqi.pokeapp.domain.entity.ItemPokemon
 import com.rifqi.pokeapp.domain.successOr
 import kotlinx.coroutines.flow.collect
@@ -19,20 +20,24 @@ class PokemonViewModel(private val pokemonUseCase: PokemonUseCase) : ViewModel()
     val loadingState: LiveData<Resource<Nothing>>
         get() = _loadingState
 
-    private val _listPokemon = MutableLiveData<List<ItemPokemon>>()
-    val listPokemon: LiveData<List<ItemPokemon>>
-        get() = _listPokemon
-
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String>
         get() = _errorMessage
+
+    private val _listPokemon = MutableLiveData<List<ItemPokemon>>()
+    val listPokemon: LiveData<List<ItemPokemon>>
+        get() = _listPokemon
 
     private val _detailPokemon = MutableLiveData<GetDetailPokemon>()
     val detailPokemon: LiveData<GetDetailPokemon>
         get() = _detailPokemon
 
+    private val _evolutionPokemon = MutableLiveData<GetEvolutionPokemon>()
+    val evolutionPokemon: LiveData<GetEvolutionPokemon>
+        get() = _evolutionPokemon
+
     init {
-        getListPokemon("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20")
+//        getListPokemon("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20")
     }
 
     fun getListPokemon(url : String) = viewModelScope.launch {
@@ -65,5 +70,18 @@ class PokemonViewModel(private val pokemonUseCase: PokemonUseCase) : ViewModel()
         }
     }
 
-
+    fun getEvolutionPokemon(url : String) = viewModelScope.launch {
+        _loadingState.value = Resource.Loading
+        pokemonUseCase.getEvolutionPokemon(url).collect() { result ->
+            when(result) {
+                is Resource.Success -> {
+                    _evolutionPokemon.value = result.data
+                }
+                is Resource.Error -> {
+                    _errorMessage.postValue(result.throwable.toString())
+                    _loadingState.value = Resource.Error(result.throwable.toString())
+                }
+            }
+        }
+    }
 }

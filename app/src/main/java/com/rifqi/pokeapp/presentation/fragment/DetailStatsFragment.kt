@@ -64,7 +64,7 @@ class DetailStatsFragment : BaseFragment() {
             dismissLoading()
         })
         pokemonViewModel.errorMessage.observe(viewLifecycleOwner, {
-            toast(it)
+            showError(it)
         })
         pokemonViewModel.loadingState.observe(this) {
             when(it){
@@ -73,6 +73,10 @@ class DetailStatsFragment : BaseFragment() {
                 is Resource.Error -> {dismissLoading()}
             }
         }
+    }
+
+    fun showError(error : String){
+        Dialog.information(requireContext(), "ERROR", error, R.drawable.error )
     }
 
     fun showLoading(){

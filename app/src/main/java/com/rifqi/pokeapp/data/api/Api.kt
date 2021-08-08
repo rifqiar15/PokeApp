@@ -1,6 +1,7 @@
 package com.rifqi.pokeapp.data.api
 
 import com.rifqi.pokeapp.domain.entity.GetDetailPokemon
+import com.rifqi.pokeapp.domain.entity.GetEvolutionPokemon
 import com.rifqi.pokeapp.domain.entity.GetListPokemon
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -13,5 +14,8 @@ interface Api {
 
     @GET
     suspend fun getDetailPokemon(@Url url : String) : GetDetailPokemon
+
+    @GET
+    suspend fun getEvolutionPokemon(@Url url : String) : GetEvolutionPokemon
 
 }

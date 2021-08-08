@@ -12,6 +12,7 @@ import com.rifqi.pokeapp.domain.entity.ItemPokemon
 import com.rifqi.pokeapp.presentation.adapter.ListPokemonAdapter
 import com.rifqi.pokeapp.presentation.viewmodel.PokemonViewModel
 import com.rifqi.pokeapp.utils.BaseFragment
+import com.rifqi.pokeapp.utils.Constants.URL_LIST_POKEMON
 import com.rifqi.pokeapp.utils.Dialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,6 +35,7 @@ class MainFragment : BaseFragment() {
 
     override fun initView(savedInstanceState: Bundle?) {
         loading = Dialog.loading(requireContext())
+        pokemonViewModel.getListPokemon(URL_LIST_POKEMON)
     }
 
     override fun initObservable() {
@@ -42,7 +44,7 @@ class MainFragment : BaseFragment() {
             dismissLoading()
         })
         pokemonViewModel.errorMessage.observe(viewLifecycleOwner, {
-            toast(it)
+            showError(it)
         })
         pokemonViewModel.loadingState.observe(this) {
             when(it){
@@ -53,6 +55,9 @@ class MainFragment : BaseFragment() {
         }
     }
 
+    fun showError(error : String){
+        Dialog.information(requireContext(), "ERROR", error, R.drawable.error )
+    }
 
     fun showLoading(){
         if (!loading.isShowing){

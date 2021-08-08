@@ -3,6 +3,7 @@ package com.rifqi.pokeapp.data.datasource
 import com.rifqi.pokeapp.data.ApiResponse
 import com.rifqi.pokeapp.data.api.Api
 import com.rifqi.pokeapp.domain.entity.GetDetailPokemon
+import com.rifqi.pokeapp.domain.entity.GetEvolutionPokemon
 import com.rifqi.pokeapp.domain.entity.ItemPokemon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -32,6 +33,21 @@ class PokemonDataSource(private val api : Api) {
         return flow {
             try {
                 val response = api.getDetailPokemon(url)
+                if(response !== null) {
+                    emit(ApiResponse.Success(response))
+                }else{
+                    emit(ApiResponse.Empty)
+                }
+            }catch (e : Exception){
+                emit(ApiResponse.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getEvolutionPokemon(url : String): Flow<ApiResponse<GetEvolutionPokemon>> {
+        return flow {
+            try {
+                val response = api.getEvolutionPokemon(url)
                 if(response !== null) {
                     emit(ApiResponse.Success(response))
                 }else{

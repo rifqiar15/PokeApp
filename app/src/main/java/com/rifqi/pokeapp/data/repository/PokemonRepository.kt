@@ -6,6 +6,7 @@ import com.rifqi.pokeapp.data.datasource.PokemonDataSource
 import com.rifqi.pokeapp.domain.IPokemonRepository
 import com.rifqi.pokeapp.domain.Resource
 import com.rifqi.pokeapp.domain.entity.GetDetailPokemon
+import com.rifqi.pokeapp.domain.entity.GetEvolutionPokemon
 import com.rifqi.pokeapp.domain.entity.ItemPokemon
 import kotlinx.coroutines.flow.Flow
 
@@ -21,5 +22,12 @@ class PokemonRepository(private val pokemonDataSource: PokemonDataSource) : IPok
             override fun loadFromApi(data: GetDetailPokemon): GetDetailPokemon = data
 
             override suspend fun fetchFromNetwork(): Flow<ApiResponse<GetDetailPokemon>> = pokemonDataSource.geDetailPokemon(url)
+        }.asFlow()
+
+    override fun getEvolutionPokemon(url: String): Flow<Resource<GetEvolutionPokemon>> =
+        object : NetworkBoundResource<GetEvolutionPokemon, GetEvolutionPokemon>() {
+            override fun loadFromApi(data: GetEvolutionPokemon): GetEvolutionPokemon = data
+
+            override suspend fun fetchFromNetwork(): Flow<ApiResponse<GetEvolutionPokemon>> = pokemonDataSource.getEvolutionPokemon(url)
         }.asFlow()
 }
