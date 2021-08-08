@@ -3,4 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/text_test"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Evolution"
+        android:gravity="center"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

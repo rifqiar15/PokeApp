@@ -3,7 +3,7 @@ package com.rifqi.pokeapp.di
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.rifqi.pokeapp.data.PokemonDataSource
+import com.rifqi.pokeapp.data.datasource.PokemonDataSource
 import com.rifqi.pokeapp.data.api.Api
 import com.rifqi.pokeapp.data.repository.PokemonRepository
 import com.rifqi.pokeapp.domain.IPokemonRepository

@@ -19,8 +19,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:src="@drawable/ic_launcher_foreground"
-            android:background="@drawable/ic_launcher_background"/>
+            android:src="@drawable/pokeball"/>
 
         <TextView
             android:id="@+id/tv_item_pokemon_name"

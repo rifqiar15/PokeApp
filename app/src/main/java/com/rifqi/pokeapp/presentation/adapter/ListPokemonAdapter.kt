@@ -22,8 +22,8 @@ class ListPokemonAdapter(private val onSelect: (ItemPokemon?) -> Unit) : Recycle
     }
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
-        val doctor = itemPokemon[position]
-        holder.bind(doctor, onSelect)
+        val pokemon = itemPokemon[position]
+        holder.bind(pokemon, onSelect)
     }
 
     override fun getItemCount(): Int = itemPokemon.size

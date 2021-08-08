@@ -22,4 +22,27 @@
         <item name="android:minHeight">48dp</item>
         <item name="maxButtonHeight">48dp</item>
     </style>
+
+    <style name="CustomDialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="Header">
+        <item name="android:textSize">@dimen/component_big</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/blue_light</item>
+        <item name="android:layout_marginTop">@dimen/component_sizeable</item>
+    </style>
+
+    <style name="Title">
+        <item name="android:textSize">@dimen/component_sizeable</item>
+        <item name="android:textColor">@color/blue_light</item>
+        <item name="android:layout_marginTop">@dimen/component_sizeable</item>
+    </style>
+
 </resources>

@@ -4,12 +4,13 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class GetListPokemon (
     @field:SerializedName("count") val count: Int,
     @field:SerializedName("next") val next: String,
     @field:SerializedName("previous") val previous: String?,
     @field:SerializedName("results") val results : List<ItemPokemon>
-)
+):Parcelable
 
 @Parcelize
 data class ItemPokemon (

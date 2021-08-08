@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">PokeApp</string>
     <string name="pokemon">Pokemon</string>
+    <string name="abilities">Abilities</string>
+    <string name="sprites">Sprites</string>
+    <string name="normal">Normal</string>
+    <string name="shiny">Shiny</string>
 </resources>
